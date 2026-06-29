@@ -25,6 +25,7 @@ public class EditorActivity extends Activity {
         code = findViewById(R.id.code);
         code.setText(Files.read(this, fileName));
 
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
         findViewById(R.id.btn_run).setOnClickListener(v -> run());
     }
 

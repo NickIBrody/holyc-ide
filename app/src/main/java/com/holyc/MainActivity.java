@@ -8,36 +8,32 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-/** File manager: lists .HC files in internal storage. */
 public class MainActivity extends Activity {
 
     private ListView list;
     private TextView empty;
     private final ArrayList<String> files = new ArrayList<>();
-    private ArrayAdapter<String> adapter;
+    private FileAdapter adapter;
 
     @Override
     protected void onCreate(Bundle b) {
         super.onCreate(b);
         setContentView(R.layout.activity_main);
 
-        list = findViewById(R.id.list);
+        list  = findViewById(R.id.list);
         empty = findViewById(R.id.empty);
         Button btnNew = findViewById(R.id.btn_new);
 
-        adapter = new ArrayAdapter<>(this, R.layout.list_item, files);
+        adapter = new FileAdapter(this, files);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener((p, v, pos, id) -> openEditor(files.get(pos)));
@@ -56,10 +52,9 @@ public class MainActivity extends Activity {
     private void refresh() {
         files.clear();
         String[] all = fileList();
-        if (all != null) {
+        if (all != null)
             for (String f : all) if (f.endsWith(".HC")) files.add(f);
-            Collections.sort(files);
-        }
+        Collections.sort(files);
         adapter.notifyDataSetChanged();
         empty.setVisibility(files.isEmpty() ? View.VISIBLE : View.GONE);
     }
@@ -74,7 +69,7 @@ public class MainActivity extends Activity {
         final EditText in = new EditText(this);
         in.setInputType(InputType.TYPE_CLASS_TEXT);
         in.setHint("Name.HC");
-        in.setTextColor(0xFFD7DAE0);
+        in.setTextColor(0xFFD0D4DE);
         new AlertDialog.Builder(this)
                 .setTitle("New file")
                 .setView(in)
@@ -83,7 +78,8 @@ public class MainActivity extends Activity {
                     if (name.isEmpty()) return;
                     if (!name.endsWith(".HC")) name += ".HC";
                     File f = new File(getFilesDir(), name);
-                    if (!f.exists()) Files.write(this, name, "U0 Main() {\n  \"Hello from HolyC!\\n\";\n}\n\nMain;\n");
+                    if (!f.exists())
+                        Files.write(this, name, "U0 Main() {\n  \"Hello from HolyC!\\n\";\n}\n\nMain;\n");
                     openEditor(name);
                 })
                 .setNegativeButton("Cancel", null)

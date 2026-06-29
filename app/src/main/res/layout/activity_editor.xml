@@ -3,15 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg">
+    android:background="@color/bg_field">
 
+    <!-- Toolbar -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:orientation="horizontal"
         android:background="@color/bg_bar"
         android:gravity="center_vertical"
-        android:padding="10dp">
+        android:paddingLeft="4dp"
+        android:paddingRight="8dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="‹"
+            android:textColor="@color/fg_dim"
+            android:background="@android:color/transparent"
+            android:textSize="22sp"
+            android:paddingLeft="12dp"
+            android:paddingRight="8dp" />
 
         <TextView
             android:id="@+id/title"
@@ -19,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/fg"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:fontFamily="monospace"
             android:singleLine="true"
             android:ellipsize="start" />
@@ -27,28 +40,37 @@
         <Button
             android:id="@+id/btn_run"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="▶ RUN"
+            android:layout_height="36dp"
+            android:text="▶  RUN"
             android:textColor="#FFFFFFFF"
             android:textStyle="bold"
-            android:background="@color/run"
-            android:paddingLeft="18dp"
-            android:paddingRight="18dp" />
+            android:textSize="13sp"
+            android:background="@color/run_bg"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" />
     </LinearLayout>
 
-    <EditText
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!-- Code editor with built-in line numbers -->
+    <com.holyc.CodeEditor
         android:id="@+id/code"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_field"
         android:textColor="@color/fg"
-        android:textColorHighlight="#334FC3F7"
+        android:textColorHighlight="#335DADE2"
         android:fontFamily="monospace"
         android:textSize="14sp"
-        android:padding="12dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp"
         android:gravity="top"
         android:inputType="textMultiLine|textNoSuggestions"
-        android:textIsSelectable="true"
         android:scrollbars="vertical"
         android:importantForAutofill="no" />
 </LinearLayout>
