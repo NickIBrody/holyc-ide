@@ -7,13 +7,10 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os -fno-stack-protector")
 
 add_library(holyc SHARED
     bridge.c
-    lexer.S
-    parser.S
-    codegen.S
+    compiler.c
     runtime.S
 )
 
 target_include_directories(holyc PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-# No STL, no libc++ — keep the .so tiny. We only need the dynamic linker.
 set_target_properties(holyc PROPERTIES LINK_FLAGS "-nostdlib++")
