@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/bg_bar"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/fg"
+            android:textSize="16sp"
+            android:fontFamily="monospace"
+            android:singleLine="true"
+            android:ellipsize="start" />
+
+        <Button
+            android:id="@+id/btn_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="▶ RUN"
+            android:textColor="#FFFFFFFF"
+            android:textStyle="bold"
+            android:background="@color/run"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/code"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_field"
+        android:textColor="@color/fg"
+        android:textColorHighlight="#334FC3F7"
+        android:fontFamily="monospace"
+        android:textSize="14sp"
+        android:padding="12dp"
+        android:gravity="top"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:textIsSelectable="true"
+        android:scrollbars="vertical"
+        android:importantForAutofill="no" />
+</LinearLayout>

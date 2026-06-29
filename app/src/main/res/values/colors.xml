@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FF14171C</color>
+    <color name="bg_bar">#FF1C2026</color>
+    <color name="bg_field">#FF0F1115</color>
+    <color name="fg">#FFD7DAE0</color>
+    <color name="fg_dim">#FF6B7280</color>
+    <color name="accent">#FF4FC3F7</color>
+    <color name="run">#FF2E7D32</color>
+    <color name="err">#FFE57373</color>
+</resources>
