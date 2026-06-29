@@ -24,7 +24,15 @@ char *hc_out_data(void);
 void *hc_jit_alloc(long size);
 long  hc_run(void *entry);
 
-typedef struct { void *print_char; void *print_uint; void *print_cstr; void *print_ptr; void *builtins; } HolyCExtra;
+typedef struct {
+    void *print_str;
+    void *print_int;
+    void *print_char;
+    void *print_uint;
+    void *print_cstr;
+    void *print_ptr;
+    void *builtins;
+} HolyCExtra;
 typedef struct { char name[32]; void *fn; } BuiltinEntry;
 
 static BuiltinEntry g_builtins[] = {
@@ -54,6 +62,8 @@ Java_com_holyc_HolyCRuntime_compileAndRun(JNIEnv *env, jclass cls, jstring jsrc)
     hc_out_reset();
 
     HolyCExtra extra = {
+        (void*)hc_print_str,
+        (void*)hc_print_int,
         (void*)hc_print_char,
         (void*)hc_print_uint,
         (void*)hc_print_cstr,

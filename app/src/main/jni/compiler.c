@@ -1392,7 +1392,15 @@ static int gen_entry(int prog_ni){
 }
 
 // Public API
-typedef struct { void *print_char; void *print_uint; void *print_cstr; void *print_ptr; void *builtins; } HolyCExtra;
+typedef struct {
+    void *print_str;
+    void *print_int;
+    void *print_char;
+    void *print_uint;
+    void *print_cstr;
+    void *print_ptr;
+    void *builtins;
+} HolyCExtra;
 
 int hc_compile(const char *src, uint8_t *buf, int cap, void *extra){
     // Reset state
@@ -1403,6 +1411,7 @@ int hc_compile(const char *src, uint8_t *buf, int cap, void *extra){
     g_buf=buf; g_pos=0; g_cap=cap; g_err=0;
     if(extra){
         HolyCExtra *e=(HolyCExtra*)extra;
+        g_pstr=e->print_str; g_pint=e->print_int;
         g_pchar=e->print_char; g_puint=e->print_uint;
         g_pcstr=e->print_cstr; g_pptr=e->print_ptr;
         g_builtins=e->builtins;
